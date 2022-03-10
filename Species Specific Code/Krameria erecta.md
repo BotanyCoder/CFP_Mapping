@@ -14,6 +14,29 @@ install.packages(c("dpylr", "purrr", "readr", "mapproj",
                    "raster", "elevatr", "rgdal", "ggplot2", "ggmap", "CoordinateCleaner", 
                    "rnaturalearthdata", "rangeBuilder","leaflet"))
 ```
+<details><summary> Individual Packages (ignore if did not have issues with previous step) </summary>
+  <p> 
+Here is a list of each package to install incase the previous methods does not work
+  
+```
+install.packages("dpylr")
+install.packages("purrr")
+install.packages("readr")
+install.packages("mapproj")
+install.packages("raster")
+install.packages("elevatr")
+install.packages("rgdal")
+install.packages("ggplot2")
+install.packages("ggmap")
+install.package("CoordinateCleaner")
+install.packages("rnaturalearthdata")
+install.packages("rangeBuilder")
+install.packages("leaflet")
+   
+```
+   </p>
+  </details>
+
 ### Now we can load the packages
 ```
 library(dplyr)
@@ -211,4 +234,4 @@ save(Krameria_erecta_Poly_1,file = "Krameria_erecta_Poly.Rdata")
 ```
 > Place the green flag on the top corner of your labtop if you have finsihed this tutorial ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
-**Congratulations you have successfully created a plant species distribution map!**
+**Congratulations you have successfully created a plant species distribution map!** 
