@@ -194,6 +194,29 @@ If you'd like to download the species distribution map directly
 ```
 ggsave(filename = "Krameria_erecta_distribuition.pdf")
 ```
+<details><summary> More filltering </summary>
+  <p>
+This section of code can be used to target specific points that may not be filtered out using coordinate cleaner, this is done by targeting outliers that are not within certain latitude or longitude    
+ 
+For latitude    
+```
+plot(Krameria_erecta_dat_cl$decimalLongitude, Krameria_erecta_dat_cl$decimalLatitude)
+geodata2 <- Krameria_erecta_dat_cl %>% filter(decimalLatitude > 20)
+plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
+    
+```  
+For longitude
+```
+geodata3 <- geodata2 %>% filter(decimalLongitude > -125)
+plot(geodata3$decimalLongitude, geodata3$decimalLatitude)
+ggmap(basemap2) + geom_point(data = geodata3, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+
+ ```
+    
+    
+</p>  
+</details>
+ 
 > Place the green flag on the top corner of your labtop if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
 # Beginning on Polygon work 
