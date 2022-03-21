@@ -249,6 +249,7 @@ PolygonMap
 ```
 Krameria_erecta_Area <- area(Krameria_erecta_Poly_1[[1]]) /1000000
 Krameria_erecta_Area
+capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")                        
 ```
 **Step 6.** Saving to polygon
 
