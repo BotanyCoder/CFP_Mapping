@@ -245,7 +245,7 @@ PolygonMap <- addPolygons(PolygonMap, data = Krameria_erecta_Poly_1[[1]])
 PolygonMap
 ```
 
-**Step 5.** Calculate the area of our species distribution in Kilometers
+**Step 5.** Calculate the area of our species distribution in Kilometers and export calculated area
 ```
 Krameria_erecta_Area <- area(Krameria_erecta_Poly_1[[1]]) /1000000
 Krameria_erecta_Area
