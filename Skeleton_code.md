@@ -249,7 +249,6 @@ Step 5.
 
 ```
 save(Krameria_erecta_Poly_1,file = "Krameria_erecta_Poly.Rdata")
-
 ```
 ### Uploading the data to Google Drive
 
