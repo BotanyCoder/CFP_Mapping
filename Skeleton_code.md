@@ -51,7 +51,7 @@ The error seems to occur due to a older verison of "terra" being installed.
 <details><summary> CLCK ME </summary>
   <p>
 
-**Step 1.** Download and instal [RTools](https://cran.r-project.org/bin/windows/Rtools/rtools40.html)
+**Step 1.** Download and install [RTools](https://cran.r-project.org/bin/windows/Rtools/rtools40.html)
 
 **Step 2.** Create a txt. file named " .Renviron ".
 
@@ -83,6 +83,16 @@ The package should be updated and no error message should appear
 # Beginning of individual spp cleaning
 The name of the file may vary, if so just replace "krameria_erecta_geo.csv" with the name of the file located on your computer.
 
+*Step 1.*  Check list of species for a speices which has not be used already
+
+[Species list](https://docs.google.com/spreadsheets/d/1b-dYWAtMH2d__rlOIhvbReTYXqSH9xj67lmR0LMz5B4/edit#gid=1238335591)
+
+*Step 2.* Sign name next to species
+
+
+*Step 3.* Download Occurences data set
+
+[Species Occurrences](https://drive.google.com/drive/u/0/folders/1syFvdxNsxo3eVK3BVlx5bYX7WoynWeYp)
 ```
 data <- read.csv("Genus_species.csv") 
 ```
