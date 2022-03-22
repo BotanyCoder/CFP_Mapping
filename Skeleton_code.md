@@ -141,6 +141,19 @@ When are are looking at a plant disturbiton we should reference a site ejepson o
 Example: 
 ![Example_Flagged](https://user-images.githubusercontent.com/99222277/153942636-3dc69b93-e386-4b8b-9015-d2736e7deb8c.png)
 
+<details><summary> How coordinate cleaning works </summary>
+  <p>
+    outliers_mtp, seems to determine how far a data point can be away from the majority of the data set and still count as being "in range"
+    For instance and "mtp" value of 5 means that a point with 5 kilometers will still be considered apart of the distubtion.
+    When we lower the value of "mtp" we lower what coordinate cleaner will consider within range.
+    
+    
+   ![MTP_Guide](https://user-images.githubusercontent.com/99222277/155865824-0b2b5ffe-8b84-4b52-a7c2-cd247696cc70.png)
+
+    
+  </p>  
+  </details>
+
 ```
 Genus_species_example <- clean_coordinates(x = Genus_species, 
                                         lon = "decimalLongitude", 
