@@ -238,3 +238,11 @@ Step 5.
 save(Krameria_erecta_Poly_1,file = "Krameria_erecta_Poly.Rdata")
 
 ```
+### Uploading the data to Google Drive
+
+*Step 1.* Create folder named after your species code
+
+*Step 2.* Add polygon, area txt file and R script used
+
+*Step 3.* Add area calcualted to Google Sheets and add additional comments if needed.
+
