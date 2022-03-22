@@ -119,8 +119,6 @@ Plot data over basemap of CFP
 
 ```
 ggmap(basemap) + geom_point(data = Genus_speies_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
-
-
 ```
 ## Building second base map of average range of data.
 Changing the bounding box may be neccesary to encompass a plant species distrubtion.
