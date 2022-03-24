@@ -19,7 +19,7 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
-Taxon_Keys <- read.csv("Genus species.csv", sep = "\t")
+Taxon_Keys <- read.csv("EXAMPLE.csv", sep = "\t")
 
 head(Taxon_Keys)
 
@@ -44,31 +44,31 @@ Species_NLat <- NLat %>% group_by(species) %>% tally()
 
 plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
 
-Genus_species<- geodata2 %>% filter(species == "Genus species")
+EXAMPLE <- geodata2 %>% filter(species == "Genus species")
 
-plot(Genus_species$decimalLongitude, Genus_species$decimalLatitude)
+plot(example$decimalLongitude, example$decimalLatitude)
 
 basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
 ggmap(basemap)
 
-ggmap(basemap) + geom_point(data = Genus_species, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
 
 basemap2 <-  get_map(location = c(-125, 20, -100, 40), zoom =5)
 ggmap(basemap2)
 
 
-Genus_species_LPLat <- quantile(Genus_species$decimalLatitude, c(0.005))
-Genus_species_UPLat <- quantile(Genus_species$decimalLatitude, c(0.995))
-Genus_species_1 <- Genus_species %>% filter(decimalLatitude > Genus_species_LPLat, decimalLatitude < Genus_species_UPLat)
+EXAMPLE_LPLat <- quantile(EXAMPLE$decimalLatitude, c(0.005))
+EXAMPLE_UPLat <- quantile(EXAMPLE$decimalLatitude, c(0.995))
+EXAMPLE_1 <- EXAMPLE %>% filter(decimalLatitude > EXAMPLE_LPLat, decimalLatitude < EXAMPLE_UPLat)
 
-Genus_species_LPLon <- quantile(Genus_species_1$decimalLongitude, c(0.005))
-Genus_species_UPLon <- quantile(Genus_species_1$decimalLongitude, c(0.995))
-Genus_species_2 <- Genus_species_1 %>% filter(decimalLongitude < Genus_species_UPLon, decimalLongitude > Genus_species_LPLon)
+EXAMPLE_LPLon <- quantile(EXAMPLE_1$decimalLongitude, c(0.005))
+EXAMPLE_UPLon <- quantile(EXAMPLE_1$decimalLongitude, c(0.995))
+EXAMPLE_2 <- EXAMPLE_1 %>% filter(decimalLongitude < EXAMPLE_UPLon, decimalLongitude > EXAMPLE_LPLon)
 
-ggmap(basemap2) + geom_point(data = Genus_species_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap2) + geom_point(data = EXAMPLE_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
-flags_Genus_erecta <- clean_coordinates(x = Genus_species, 
+flags_EXAMPLE <- clean_coordinates(x = EXAMPLE, 
                                         lon = "decimalLongitude", 
                                         lat = "decimalLatitude",
                                         countries = "countryCode",
@@ -80,38 +80,38 @@ flags_Genus_erecta <- clean_coordinates(x = Genus_species,
                                         outliers_td = 60,
                                         outliers_size = 100)
 
-Genus_species_dat_fl <- Genus_species[!flags_Genus_species$.summary,]
+EXAMPLE_dat_fl <- EXAMPLE[!flags_EXAMPLE$.summary,]
 
-Genus_species_dat_cl <- Genus_species[flags_Genus_species$.summary,]
+EXAMPLE_dat_cl <- EXAMPLE[flags_EXAMPLE$.summary,]
 
-plot(flags_Genus_species, lon = "decimalLongitude", lat = "decimalLatitude")
+plot(flags_EXAMPLE, lon = "decimalLongitude", lat = "decimalLatitude")
 
-ggmap(basemap2) + geom_point(data = Genus_species_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap2) + geom_point(data = EXAMPLE_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
-ggsave(filename = "Genus_species_distribuition.pdf")
+ggsave(filename = "EXAMPLE_distribuition.pdf")
 
-Genus_species_Poly_1 <- getDynamicAlphaHull(Genus_species_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
+EXAMPLE_Poly_1 <- getDynamicAlphaHull(EXAMPLE_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
                                     coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
                                     proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, verbose = TRUE)
 
-plot(Genus_species_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
+plot(EXAMPLE_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
 
-points(Genus_species_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
+points(EXAMPLE_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
 
-save(Genus_species_Poly_1, file = "Genus_species.Rdata")
+save(EXAMPLE_Poly_1, file = "EXAMPLE.Rdata")
 
 library(leaflet)
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
-PolygonMap <- addPolygons(PolygonMap, data = Genus_species_Poly_1[[1]])
+PolygonMap <- addPolygons(PolygonMap, data = EXAMPLE_Poly_1[[1]])
 PolygonMap
 
-Genus_species_Area <- area(Genus_species_Poly_1[[1]]) /1000000
-Genus_species_Area
-capture.output(Genus_species_Area, file = "Genus_species_area.txt")
+EXAMPLE_Area <- area(EXAMPLE_Poly_1[[1]]) /1000000
+EXAMPLE_Area
+capture.output(EXAMPLE_Area, file = "EXAMPLE_area.txt")
 ```
 ## Step 2: Set working directory and load packages
-## Step 3: Change "Genus_species" variables into your species and load your species dataset
+## Step 3: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
 #### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
 ## Step 4: Run code and save the following outputs
 ###         -code for your species (.R)
