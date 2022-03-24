@@ -4,6 +4,21 @@
 setwd("~/CFP_Mapping") 
 getwd()
 
+install.packages("dpylr")
+install.packages("purrr")
+install.packages("readr")
+install.packages("mapproj")
+install.packages("raster")
+install.packages("elevatr")
+install.packages("rgdal")
+install.packages("ggplot2")
+install.packages("ggmap")
+install.package("CoordinateCleaner")
+install.packages("rnaturalearthdata")
+install.packages("rangeBuilder")
+install.packages("leaflet")
+
+
 library(dplyr)
 library(purrr)
 library(readr)  
@@ -20,26 +35,9 @@ library(rangeBuilder)
 library(rlang)
 
 data <- read.csv("Genus species.csv")
-
 head(data)
+genus_species <- data
 
-geodata <- data %>% filter(!is.na(decimalLatitude)) 
-
-geodata2 <- geodata %>% filter(!is.na(decimalLongitude))
-
-geodata2_Species_List <- geodata2 %>% group_by(species) %>% tally()
-geodata2_Species_List
-
-plot(geodata2$decimalLatitude)
-hist(geodata2$decimalLatitude, breaks=60)
-
-NLat <- geodata2 %>% filter(decimalLatitude < 1) 
-
-Species_NLat <- NLat %>% group_by(species) %>% tally()
-
-plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
-
-EXAMPLE <- geodata2 %>% filter(species == "Genus species")
 
 plot(EXAMPLE$decimalLongitude, EXAMPLE$decimalLatitude)
 
@@ -50,18 +48,7 @@ ggmap(basemap) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLat
 
 
 basemap2 <-  get_map(location = c(-140, 20, -40, 60), zoom =3)
-ggmap(basemap2)
-
-
-EXAMPLE_LPLat <- quantile(EXAMPLE$decimalLatitude, c(0.005))
-EXAMPLE_UPLat <- quantile(EXAMPLE$decimalLatitude, c(0.995))
-EXAMPLE_1 <- EXAMPLE %>% filter(decimalLatitude > EXAMPLE_LPLat, decimalLatitude < EXAMPLE_UPLat)
-
-EXAMPLE_LPLon <- quantile(EXAMPLE_1$decimalLongitude, c(0.005))
-EXAMPLE_UPLon <- quantile(EXAMPLE_1$decimalLongitude, c(0.995))
-EXAMPLE_2 <- EXAMPLE_1 %>% filter(decimalLongitude < EXAMPLE_UPLon, decimalLongitude > EXAMPLE_LPLon)
-
-ggmap(basemap2) + geom_point(data = EXAMPLE_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap2) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
 flags_EXAMPLE <- clean_coordinates(x = EXAMPLE, 
                                         lon = "decimalLongitude", 
