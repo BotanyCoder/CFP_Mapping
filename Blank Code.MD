@@ -49,7 +49,7 @@ ggmap(basemap)
 ggmap(basemap) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
 
-basemap2 <-  get_map(location = c(-140, 20, -40, 60), zoom =5)
+basemap2 <-  get_map(location = c(-140, 20, -40, 60), zoom =3)
 ggmap(basemap2)
 
 
