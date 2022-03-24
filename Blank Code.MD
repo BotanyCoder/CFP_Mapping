@@ -19,7 +19,7 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
-Taxon_Keys <- read.csv("0000436-210914110416597.csv", sep = "\t")
+Taxon_Keys <- read.csv("Genus species.csv", sep = "\t")
 
 head(Taxon_Keys)
 
@@ -44,31 +44,31 @@ Species_NLat <- NLat %>% group_by(species) %>% tally()
 
 plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
 
-Krameria_erecta<- geodata2 %>% filter(species == "Krameria erecta")
+Genus_species<- geodata2 %>% filter(species == "Genus species")
 
-plot(Krameria_erecta$decimalLongitude, Krameria_erecta$decimalLatitude)
+plot(Genus_species$decimalLongitude, Genus_species$decimalLatitude)
 
 basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
 ggmap(basemap)
 
-ggmap(basemap) + geom_point(data = Krameria_erecta, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap) + geom_point(data = Genus_species, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
 
 basemap2 <-  get_map(location = c(-125, 20, -100, 40), zoom =5)
 ggmap(basemap2)
 
 
-Krameria_erecta_LPLat <- quantile(Krameria_erecta$decimalLatitude, c(0.005))
-Krameria_erecta_UPLat <- quantile(Krameria_erecta$decimalLatitude, c(0.995))
-Krameria_erecta_1 <- Krameria_erecta %>% filter(decimalLatitude > Krameria_erecta_LPLat, decimalLatitude < Krameria_erecta_UPLat)
+Genus_species_LPLat <- quantile(Genus_species$decimalLatitude, c(0.005))
+Genus_species_UPLat <- quantile(Genus_species$decimalLatitude, c(0.995))
+Genus_species_1 <- Genus_species %>% filter(decimalLatitude > Genus_species_LPLat, decimalLatitude < Genus_species_UPLat)
 
-Krameria_erecta_LPLon <- quantile(Krameria_erecta_1$decimalLongitude, c(0.005))
-Krameria_erecta_UPLon <- quantile(Krameria_erecta_1$decimalLongitude, c(0.995))
-Krameria_erecta_2 <- Krameria_erecta_1 %>% filter(decimalLongitude < Krameria_erecta_UPLon, decimalLongitude > Krameria_erecta_LPLon)
+Genus_species_LPLon <- quantile(Genus_species_1$decimalLongitude, c(0.005))
+Genus_species_UPLon <- quantile(Genus_species_1$decimalLongitude, c(0.995))
+Genus_species_2 <- Genus_species_1 %>% filter(decimalLongitude < Genus_species_UPLon, decimalLongitude > Genus_species_LPLon)
 
-ggmap(basemap2) + geom_point(data = Krameria_erecta_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+ggmap(basemap2) + geom_point(data = Genus_species_2, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
-flags_Krameria_erecta <- clean_coordinates(x = Krameria_erecta, 
+flags_Genus_erecta <- clean_coordinates(x = Genus_species, 
                                         lon = "decimalLongitude", 
                                         lat = "decimalLatitude",
                                         countries = "countryCode",
@@ -79,42 +79,40 @@ flags_Krameria_erecta <- clean_coordinates(x = Krameria_erecta,
                                         outliers_mtp = 2,
                                         outliers_td = 60,
                                         outliers_size = 100)
-Krameria_erecta_dat_fl <- Krameria_erecta[!flags_Krameria_erecta$.summary,]
 
-Krameria_erecta_dat_cl <- Krameria_erecta[flags_Krameria_erecta$.summary,]
+Genus_species_dat_fl <- Genus_species[!flags_Genus_species$.summary,]
 
-plot(flags_Krameria_erecta, lon = "decimalLongitude", lat = "decimalLatitude")
+Genus_species_dat_cl <- Genus_species[flags_Genus_species$.summary,]
 
-ggmap(basemap2) + geom_point(data = Krameria_erecta_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+plot(flags_Genus_species, lon = "decimalLongitude", lat = "decimalLatitude")
 
-ggsave(filename = "Krameria_erecta_distribuition.pdf")
+ggmap(basemap2) + geom_point(data = Genus_species_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
-Krameria_erecta_Poly_1 <- getDynamicAlphaHull(Krameria_erecta_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
+ggsave(filename = "Genus_species_distribuition.pdf")
+
+Genus_species_Poly_1 <- getDynamicAlphaHull(Genus_species_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
                                     coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
                                     proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, verbose = TRUE)
 
-plot(Krameria_erecta_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
+plot(Genus_species_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
 
-points(Krameria_erecta_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
+points(Genus_species_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
 
-library(rgdal)
-writeOGR(Krameria_erecta_Poly_1, dsn = '.', layer = 'poly', driver = "ESRI Shapefile")
-library(sp)
 save(Krameria_erecta_Poly_1, file = "Krameria_erecta.Rdata")
 
 library(leaflet)
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
-PolygonMap <- addPolygons(PolygonMap, data = Krameria_erecta_Poly_1[[1]])
+PolygonMap <- addPolygons(PolygonMap, data = Genus_species_Poly_1[[1]])
 PolygonMap
 
-ggmap(basemap2) + geom_polygon(data = Krameria_erecta_Poly_1[[1]])
+ggmap(basemap2) + geom_polygon(data = Genus_species_Poly_1[[1]])
 
 st_write(Classmaps01, "Krameria_erecta.shp")
 
-Krameria_erecta_Area <- area(Krameria_erecta_Poly_1[[1]]) /1000000
-Krameria_erecta_Area
-capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")
+Genus_species_Area <- area(Genus_species_Poly_1[[1]]) /1000000
+Genus_species_Area
+capture.output(Genus_species_Area, file = "Genus_species_area")
 ```
 ## Step 2: Set working directory and load packages
 ## Step 3: Change "Genus_species" variables into your species and load your species dataset
