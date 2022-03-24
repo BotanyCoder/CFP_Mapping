@@ -96,7 +96,7 @@ plot(EXAMPLE_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA)
 
 points(EXAMPLE_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
 
-save(EXAMPLE_Poly_1, file = "EXAMPLE.Rdata")
+save(EXAMPLE_Poly_1, file = "EXAMPLE_poly.Rdata")
 
 library(leaflet)
 PolygonMap <- leaflet()
@@ -113,7 +113,7 @@ capture.output(EXAMPLE_Area, file = "EXAMPLE_area.txt")
 #### Variables that say "Genus species" should be replaced with the name of your species in this same format
 #### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
 ## Step 4: Run code and save the following outputs
-###         -code for your species (.R)
+###         -code for your species (EXAMPLE_code.R)
 ###         -polygon (.Rdata)
 ###         -text file of area (.txt)
 ## Step 5: Upload all outputs to the Shared Drive
