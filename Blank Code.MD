@@ -19,22 +19,19 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
-Taxon_Keys <- read.csv("Genus species.csv")
+data <- read.csv("Genus species.csv")
 
-head(Taxon_Keys)
+head(data)
 
-Taxon_Keys_Species_List <- Taxon_Keys %>% group_by(species) %>% tally()
-Taxon_Keys_Species_List
-
-geodata <- Taxon_Keys %>% filter(!is.na(decimalLatitude)) 
+geodata <- data %>% filter(!is.na(decimalLatitude)) 
 
 geodata2 <- geodata %>% filter(!is.na(decimalLongitude))
 
 geodata2_Species_List <- geodata2 %>% group_by(species) %>% tally()
+geodata2_Species_List
 
-geodata2$decimalLatitude
-plot(geodata$decimalLatitude)
-hist(geodata$decimalLatitude, breaks=60)
+plot(geodata2$decimalLatitude)
+hist(geodata2$decimalLatitude, breaks=60)
 
 NLat <- geodata2 %>% filter(decimalLatitude < 1) 
 
