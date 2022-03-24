@@ -107,7 +107,7 @@ capture.output(EXAMPLE_Area, file = "EXAMPLE_area.txt")
 ```
 ## Step 2: Set working directory and load packages
 ## Step 3: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
-#### Variables that say "Genus species" should be replaced with the name of your species in this same format
+#### Variables that say "Genus species" should be replaced with the name of your species in this same format, you can use find and replace to replace EXAMPLE quickly
 #### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
 ## Step 4: Run code and save the following outputs
 ###         -code for your species (EXAMPLE_code.R)
