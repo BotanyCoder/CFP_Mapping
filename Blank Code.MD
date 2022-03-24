@@ -23,10 +23,8 @@ Taxon_Keys <- read.csv("Genus species.csv", sep = "\t")
 
 head(Taxon_Keys)
 
-Taxon_Keys_Spp <- c(Taxon_Keys$species)
-Taxon_Keys_Spp_Tally <- Taxon_Keys_Spp %>% group_by(species) %>% tally() 
-
 Taxon_Keys_Species_List <- Taxon_Keys %>% group_by(species) %>% tally()
+Taxon_Keys_Species_List
 
 geodata <- Taxon_Keys %>% filter(!is.na(decimalLatitude)) 
 
