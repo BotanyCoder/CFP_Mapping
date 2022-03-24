@@ -2,7 +2,7 @@
 
 ```
 setwd("~/CFP_Mapping") 
-dir()
+getwd()
 
 library(dplyr)
 library(purrr)
