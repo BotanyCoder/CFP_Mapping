@@ -98,7 +98,7 @@ plot(Genus_species_Poly_1[[1]], col=transparentColor('dark green', 0.5), border 
 
 points(Genus_species_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
 
-save(Krameria_erecta_Poly_1, file = "Krameria_erecta.Rdata")
+save(Genus_species_Poly_1, file = "Genus_species.Rdata")
 
 library(leaflet)
 PolygonMap <- leaflet()
@@ -106,13 +106,9 @@ PolygonMap <- addTiles(PolygonMap)
 PolygonMap <- addPolygons(PolygonMap, data = Genus_species_Poly_1[[1]])
 PolygonMap
 
-ggmap(basemap2) + geom_polygon(data = Genus_species_Poly_1[[1]])
-
-st_write(Classmaps01, "Krameria_erecta.shp")
-
 Genus_species_Area <- area(Genus_species_Poly_1[[1]]) /1000000
 Genus_species_Area
-capture.output(Genus_species_Area, file = "Genus_species_area")
+capture.output(Genus_species_Area, file = "Genus_species_area.txt")
 ```
 ## Step 2: Set working directory and load packages
 ## Step 3: Change "Genus_species" variables into your species and load your species dataset
