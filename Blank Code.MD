@@ -19,7 +19,7 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
-Taxon_Keys <- read.csv("Genus species.csv", sep = "\t")
+Taxon_Keys <- read.csv("Genus species.csv")
 
 head(Taxon_Keys)
 
