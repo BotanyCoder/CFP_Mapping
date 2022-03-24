@@ -46,7 +46,7 @@ plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
 
 EXAMPLE <- geodata2 %>% filter(species == "Genus species")
 
-plot(example$decimalLongitude, example$decimalLatitude)
+plot(EXAMPLE$decimalLongitude, EXAMPLE$decimalLatitude)
 
 basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
 ggmap(basemap)
