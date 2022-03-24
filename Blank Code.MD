@@ -1,3 +1,5 @@
+## Step 1: Load entire code into RStudio
+
 ```
 setwd("~/CFP_Mapping") 
 dir()
@@ -5,9 +7,7 @@ dir()
 library(dplyr)
 library(purrr)
 library(readr)  
-library(magrittr) # for %T>% pipe
-library(rgbif) # for occ_download
-library(taxize) # for get_gbifid_
+library(magrittr)
 library(mapproj)
 library(raster)
 library(elevatr)
@@ -116,7 +116,6 @@ Krameria_erecta_Area <- area(Krameria_erecta_Poly_1[[1]]) /1000000
 Krameria_erecta_Area
 capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")
 ```
-## Step 1: Load entire code into RStudio
 ## Step 2: Set working directory and load packages
 ## Step 3: Run code and save the following outputs
 #           
