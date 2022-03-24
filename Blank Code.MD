@@ -117,7 +117,7 @@ Krameria_erecta_Area
 capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")
 ```
 ## Step 2: Set working directory and load packages
-## Step 3: Change example "Genus_species" variables into your species and load your species dataset
+## Step 3: Change "Genus_species" variables into your species and load your species dataset
 ### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
 ## Step 4: Run code and save the following outputs
 ###         -code for your species (.R)
