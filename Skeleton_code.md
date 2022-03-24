@@ -1,5 +1,4 @@
 # CFP_Mapping
-(state the purpuse of this project/goal and what "CFP" means)
 
 ## Set working directory 
 Setting up your workplace is important when it comes to organization and accessing necessary files. 
@@ -208,8 +207,6 @@ Opitional Download
 ggsave(filename = "Genus_species_distribuition.pdf")
 ```
     
-(Note from Alexander)Probably need to filter through occurrences manually to remove any outliers remaining
-
 # Beginning on Polygon work
 (short explaination of why we are creating polygon/ shapefiles)
 
