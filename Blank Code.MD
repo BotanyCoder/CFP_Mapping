@@ -19,7 +19,7 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
-Taxon_Keys <- read.csv("EXAMPLE.csv", sep = "\t")
+Taxon_Keys <- read.csv("Genus species.csv", sep = "\t")
 
 head(Taxon_Keys)
 
@@ -112,6 +112,7 @@ capture.output(EXAMPLE_Area, file = "EXAMPLE_area.txt")
 ```
 ## Step 2: Set working directory and load packages
 ## Step 3: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
+#### Variables that say "Genus species" should be replaces with the name of your species in this same format
 #### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
 ## Step 4: Run code and save the following outputs
 ###         -code for your species (.R)
