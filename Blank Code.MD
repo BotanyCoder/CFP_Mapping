@@ -19,20 +19,20 @@ install.packages("rangeBuilder")
 install.packages("leaflet")
 
 
-library(dplyr)
-library(purrr)
-library(readr)  
-library(magrittr)
-library(mapproj)
-library(raster)
-library(elevatr)
-library(rgdal)
-library(ggplot2)
-library(ggmap)
-library(CoordinateCleaner)
-library(rnaturalearth)
-library(rangeBuilder)
-library(rlang)
+#library(dplyr)
+#library(purrr)
+#library(readr)  
+#library(magrittr)
+#library(mapproj)
+#library(raster)
+#library(elevatr)
+#library(rgdal)
+#library(ggplot2)
+#library(ggmap)
+#library(CoordinateCleaner)
+#library(rnaturalearth)
+#library(rangeBuilder)
+#library(rlang)
 
 data <- read.csv("Genus species.csv")
 head(data)
@@ -96,9 +96,10 @@ capture.output(EXAMPLE_Area, file = "EXAMPLE_area.txt")
 ## Step 3: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
 #### Variables that say "Genus species" should be replaced with the name of your species in this same format, you can use find and replace to replace EXAMPLE quickly
 #### Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your species.csv
-## Step 4: Run code and save the following outputs
+## Step 4: Run code up to the filtering step, check the Jepson and Flora of North America to make sure the filter is appropiate. 
+## Step 5: save the following outputs
 ###         -code for your species (EXAMPLE_code.R)
 ###         -polygon (.Rdata)
 ###         -text file of area (.txt)
-## Step 5: Upload all outputs to the Shared Drive
+## Step 6: Upload all outputs to the Shared Drive
 #### Google Drive > Shared Drives > CFP_maps > Outputs (code, polygon, text file) > *create* "Your Species" folder > upload outputs
