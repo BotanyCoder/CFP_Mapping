@@ -36,7 +36,7 @@ library(rlang)
 
 data <- read.csv("Genus species.csv")
 head(data)
-genus_species <- data
+EXAMPLE <- data
 
 
 plot(EXAMPLE$decimalLongitude, EXAMPLE$decimalLatitude)
