@@ -58,7 +58,7 @@ flags_EXAMPLE <- clean_coordinates(x = EXAMPLE,
                                         tests = c("capitals", "centroids", "equal","gbif", "institutions",
                                                   "zeros", "outliers","seas"),
                                         outliers_method = "quantile",
-                                        outliers_mtp = 2,
+                                        outliers_mtp = 8,
                                         outliers_td = 60,
                                         outliers_size = 100)
 
