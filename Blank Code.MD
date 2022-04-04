@@ -43,13 +43,12 @@ EXAMPLE <- data
 #Create a preliminary plot of the data
 plot(EXAMPLE$decimalLongitude, EXAMPLE$decimalLatitude)
 
-#Creates a large base map showing the entirety of North America
+#Create a large base map showing the entirety of North America
 basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
 ggmap(basemap)
 ggmap(basemap) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
-#Creates a secondary map, we recommend changing the values (-140, 20, -32, 60), zoom=3 to better fit your plant distribution 
-
+#Create a secondary map, we recommend changing the values (-140, 20, -32, 60), zoom=3 to better fit your plant distribution 
 basemap2 <-  get_map(location = c(-140, 20, -40, 60), zoom =3)
 ggmap(basemap2) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
@@ -66,44 +65,44 @@ flags_EXAMPLE <- clean_coordinates(x = EXAMPLE,
                                         outliers_td = 60,
                                         outliers_size = 100)
 
-#Isolates flagged occurrences
+#Isolate flagged occurrences
 
 EXAMPLE_dat_fl <- EXAMPLE[!flags_EXAMPLE$.summary,]
-#Excludes flagged occurrences
+#Exclude flagged occurrences
 
 EXAMPLE_dat_cl <- EXAMPLE[flags_EXAMPLE$.summary,]
 
-#Plots the flagged data set as well as the non-flagged species
+#Plot the flagged data set as well as the non-flagged species
 
-#Plots the filtered plant distribution 
+#Plot the filtered plant distribution 
 plot(flags_EXAMPLE, lon = "decimalLongitude", lat = "decimalLatitude")
 ggmap(basemap2) + geom_point(data = EXAMPLE_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
 #(Opitional saves data as a pdf)
 #ggsave(filename = "EXAMPLE_distribuition.pdf")
 
-#Creates a polygon of the total plant distribution
+#Create a polygon of the total plant distribution
 EXAMPLE_Poly_1 <- getDynamicAlphaHull(EXAMPLE_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
                                     coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
                                     proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, verbose = TRUE)
 
-#Plots the polygon
+#Plot the polygon
 plot(EXAMPLE_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
 
-#Adds points to polygon for a visual representation of occurrences 
+#Add points to polygon for a visual representation of occurrences 
 points(EXAMPLE_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
 
-#Savivng the polygon
+#Save the polygon
 save(EXAMPLE_Poly_1, file = "EXAMPLE_poly.Rdata")
 
-#Creates an interactive map
+#Create an interactive map
 library(leaflet)
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
 PolygonMap <- addPolygons(PolygonMap, data = EXAMPLE_Poly_1[[1]])
 PolygonMap
 
-#Calculates the area of the polygon
+#Calculate the area of the polygon
 EXAMPLE_Area <- area(EXAMPLE_Poly_1[[1]]) /1000000
 EXAMPLE_Area
 #Saves the area calcuated as a text file
