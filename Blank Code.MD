@@ -34,22 +34,26 @@ library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
 
+#Import data
 data <- read.csv("Genus species.csv")
 head(data)
 EXAMPLE <- data
 
 
+#Create a preliminary plot of the data
 plot(EXAMPLE$decimalLongitude, EXAMPLE$decimalLatitude)
 
+#Creates a large base map showing the entirety of North America
 basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
 ggmap(basemap)
-
 ggmap(basemap) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
+#Creates a secondary map, we recommend changing the values (-140, 20, -32, 60), zoom=3 to better fit your plant distribution 
 
 basemap2 <-  get_map(location = c(-140, 20, -40, 60), zoom =3)
 ggmap(basemap2) + geom_point(data = EXAMPLE, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 
+#This section will filter data that does not meet the parameters mentioned below, changing the value of outliers_mtp = 5, increases the value will encompass more data increase your area while decreasing the values will decrease your distribution area
 flags_EXAMPLE <- clean_coordinates(x = EXAMPLE, 
                                         lon = "decimalLongitude", 
                                         lat = "decimalLatitude",
@@ -62,6 +66,7 @@ flags_EXAMPLE <- clean_coordinates(x = EXAMPLE,
                                         outliers_td = 60,
                                         outliers_size = 100)
 
+#Creates a dataset of flagged data
 EXAMPLE_dat_fl <- EXAMPLE[!flags_EXAMPLE$.summary,]
 
 EXAMPLE_dat_cl <- EXAMPLE[flags_EXAMPLE$.summary,]
