@@ -33,6 +33,7 @@ library(CoordinateCleaner)
 library(rnaturalearth)
 library(rangeBuilder)
 library(rlang)
+library(leaflet)
 
 #Import data
 data <- read.csv("Genus species.csv")
@@ -96,7 +97,6 @@ points(EXAMPLE_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch 
 save(EXAMPLE_Poly_1, file = "EXAMPLE_poly.Rdata")
 
 #Create an interactive map
-library(leaflet)
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
 PolygonMap <- addPolygons(PolygonMap, data = EXAMPLE_Poly_1[[1]])
