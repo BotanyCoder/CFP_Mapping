@@ -67,7 +67,6 @@ flags_EXAMPLE <- clean_coordinates(x = EXAMPLE,
                                         outliers_size = 100)
 
 #Isolate flagged occurrences
-
 EXAMPLE_dat_fl <- EXAMPLE[!flags_EXAMPLE$.summary,]
 #Exclude flagged occurrences
 
@@ -78,6 +77,16 @@ EXAMPLE_dat_cl <- EXAMPLE[flags_EXAMPLE$.summary,]
 #Plot the filtered plant distribution 
 plot(flags_EXAMPLE, lon = "decimalLongitude", lat = "decimalLatitude")
 ggmap(basemap2) + geom_point(data = EXAMPLE_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+
+#If you need to do "manual cleaning" you can use dplyr to remove specific points from your dataset
+#Just remove the # from the line and add the necessary parameters
+#For removing points based only on latitude:
+#EXAMPLE_dat_cl2 <- EXAMPLE_dat_cl %>% filter(decimalLatitude < 1)
+
+#For removing points based only on longitude:
+#EXAMPLE_dat_cl2 <- EXAMPLE_dat_cl %>% filter(decimalLongitude < 1)
+
+# IMPORTANT: if you use "manual filtering" replace EXAMPLE_dat_cl by EXAMPLE_dat_cl2 in the code below
 
 #(Opitional saves data as a pdf)
 #ggsave(filename = "EXAMPLE_distribuition.pdf")
