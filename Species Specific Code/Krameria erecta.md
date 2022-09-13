@@ -134,12 +134,6 @@ Plot data over a general basemap
 ggmap(basemap) + geom_point(data = Krameria_erecta, aes(x=decimalLongitude, y=decimalLatitude, color=species))
 ```
 
-Creating a basemap of for our spcies
-```
-basemap2 <-  get_map(location = c(-125, 10, -95, 40), zoom =5)
-ggmap(basemap2)
-
-```
  > Place the green flag on the top corner of your labtop if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 # Ploting our data onto the basemap
 > Change the flag back to yellow for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
@@ -185,6 +179,11 @@ Krameria_erecta_dat_cl <- Krameria_erecta[flags_Krameria_erecta$.summary,]
 Plotting flagged and non-flagged species
 ```
 plot(flags_Krameria_erecta, lon = "decimalLongitude", lat = "decimalLatitude")
+```
+Creating a basemap of for our spcies
+```
+basemap2 <-  get_map(location = c(-125, 10, -95, 40), zoom =5)
+ggmap(basemap2)
 ```
 Plotting data with flags removed over basemap2
 ```
