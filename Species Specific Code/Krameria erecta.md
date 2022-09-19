@@ -10,48 +10,20 @@ setwd("~/CFP_Mapping")
 ```
 ### Next you must install the necessary packages
 ```
-install.packages(c("dpylr", "purrr", "readr", "mapproj", 
-                   "raster", "elevatr", "rgdal", "ggplot2", "ggmap", "CoordinateCleaner", 
-                   "rnaturalearthdata", "rangeBuilder","leaflet"))
-```
-<details><summary> Individual Packages (ignore if did not have issues with previous step) </summary>
-  <p> 
-Here is a list of each package to install incase the previous methods does not work
-  
-```
-install.packages("dpylr")
-install.packages("purrr")
-install.packages("readr")
-install.packages("mapproj")
-install.packages("raster")
-install.packages("elevatr")
-install.packages("rgdal")
-install.packages("ggplot2")
-install.packages("ggmap")
-install.package("CoordinateCleaner")
-install.packages("rnaturalearthdata")
-install.packages("rangeBuilder")
 install.packages("leaflet")
-   
+install.packages("CoordinateCleaner")
+install.packages("dpylr")
+install.packages("rangeBuilder")
+install.packages("raster")
 ```
-   </p>
-  </details>
 
 ### Now we can load the packages
 ```
 library(dplyr)
-library(purrr)
-library(readr)  
-library(mapproj)
-library(raster)
-library(elevatr)
-library(rgdal)
-library(ggplot2)
-library(ggmap)
 library(CoordinateCleaner)
-library(rnaturalearth)
 library(rangeBuilder)
 library(leaflet)
+library(raster)
 ```
 > Change your flag to green once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
@@ -118,28 +90,24 @@ data <- read.csv("Krameria_erecta_geo.csv")
 Set Krameria erecta as an variable
 ```
 Krameria_erecta <- data
+head(data)
+krameria <- data
 ```
-Plotting out uncleaned data to get coordinate frame
+Create a preliminary plot of the data
 ```
-plot(Krameria_erecta$decimalLongitude, Krameria_erecta$decimalLatitude)
+plot(krameria$decimalLongitude, krameria$decimalLatitude)
 ```
-
-Building a initial base map 
+Create an interactive map for points
 ```
-basemap <-  get_map(location = c(-140, -60, -32, 60), zoom = 3)
-ggmap(basemap)
-```
-Plot data over a general basemap
-```
-ggmap(basemap) + geom_point(data = Krameria_erecta, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+PointMap <- leaflet()
+PointMap <- addTiles(PointMap)
+PointMap <- addCircleMarkers(PointMap, lng=krameria$decimalLongitude, lat = krameria$decimalLatitude)
+PointMap
 ```
 
  > Place the green flag on the top corner of your labtop if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 # Ploting our data onto the basemap
 > Change the flag back to yellow for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
-```
-ggmap(basemap2) + geom_point(data = Krameria_erecta, aes(x=decimalLongitude, y=decimalLatitude, color=species))
-```
 
 ## Beginning of coordinate cleaning
 <details><summary> How coordinate cleaning works </summary>
@@ -156,42 +124,50 @@ ggmap(basemap2) + geom_point(data = Krameria_erecta, aes(x=decimalLongitude, y=d
   </details>
 
 ```
-flags_Krameria_erecta <- clean_coordinates(x = Krameria_erecta, 
-                                        lon = "decimalLongitude", 
-                                        lat = "decimalLatitude",
-                                        countries = "countryCode",
-                                        species = "species",
-                                        tests = c("capitals", "centroids", "equal","gbif", "institutions",
-                                                  "zeros", "outliers","seas"),
-                                        outliers_method = "quantile",
-                                        outliers_mtp = 5,
-                                        outliers_td = 60,
-                                        outliers_size = 100)
+report_krameria <- clean_coordinates(x = krameria, 
+                                   lon = "decimalLongitude", 
+                                   lat = "decimalLatitude",
+                                   countries = "countryCode",
+                                   species = "species",
+                                   tests = c("capitals", "centroids", "equal","gbif", "institutions",
+                                             "zeros", "outliers","seas"),
+                                   outliers_method = "quantile",
+                                   outliers_mtp = 5,
+                                   outliers_td = 60,
+                                   outliers_size = 100)
  ```
 Isolate the flagged obs.
 ```
-Krameria_erecta_dat_fl <- Krameria_erecta[!flags_Krameria_erecta$.summary,]
+flags_krameria <- krameria[!report_krameria$.summary,]
 ```
 Exclude flagged obs.
 ```
-Krameria_erecta_dat_cl <- Krameria_erecta[flags_Krameria_erecta$.summary,]
+clean_krameria <- krameria[report_krameria$.summary,]
+
 ```
 Plotting flagged and non-flagged species
 ```
-plot(flags_Krameria_erecta, lon = "decimalLongitude", lat = "decimalLatitude")
+plot(report_krameria, lon = "decimalLongitude", lat = "decimalLatitude")
 ```
 Creating a basemap of for our spcies
 ```
 basemap2 <-  get_map(location = c(-125, 10, -95, 40), zoom =5)
 ggmap(basemap2)
 ```
-Plotting data with flags removed over basemap2
+Plot the filtered plant distribution 
 ```
-ggmap(basemap2) + geom_point(data = Krameria_erecta_dat_cl, aes(x=decimalLongitude, y=decimalLatitude, color=species))
+PointMap2 <- leaflet()
+PointMap2 <- addTiles(PointMap2)
+PointMap2 <- addCircleMarkers(PointMap2, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude)
+PointMap2
 ```
 If you'd like to download the species distribution map directly
 ```
 ggsave(filename = "Krameria_erecta_distribuition.pdf")
+```
+Save the cleaned dataset
+```
+write.csv(clean_krameria, file = "Krameria_erecta_geo_cl.csv")
 ```
 <details><summary> More filltering </summary>
   <p>
@@ -203,7 +179,7 @@ plot(Krameria_erecta_dat_cl$decimalLongitude, Krameria_erecta_dat_cl$decimalLati
 geodata2 <- Krameria_erecta_dat_cl %>% filter(decimalLatitude > 20)
 plot(geodata2$decimalLongitude, geodata2$decimalLatitude)
     
-```  
+```
 For longitude
 ```
 geodata3 <- geodata2 %>% filter(decimalLongitude > -125)
@@ -224,37 +200,32 @@ ggmap(basemap2) + geom_point(data = geodata3, aes(x=decimalLongitude, y=decimalL
 
 **Step 1.** Creating the polygon
 ```
-Krameria_erecta_Poly_1 <- getDynamicAlphaHull(Krameria_erecta_dat_cl, fraction = 0.95, partCount = 4, buff = 10000, initialAlpha = 3,
-                                    coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
-                                    proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, verbose = TRUE)
+krameria_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
+                                      coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
+                                      proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, alphaCap = 100, verbose = TRUE)
 ```
 **Step 2.** Plot the polygon  
 ```
-plot(Krameria_erecta_Poly_1[[1]], col=transparentColor('dark green', 0.5), border = NA) 
-```
-**Step 3.** Plot data points onto polygon
-```
-points(Krameria_erecta_dat_cl[,c('decimalLongitude','decimalLatitude')], cex = 0.5, pch = 3)
-```
-**Step 4.** View the polygon on top of an interactive map using Leaflet
-```
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
-PolygonMap <- addPolygons(PolygonMap, data = Krameria_erecta_Poly_1[[1]])
+```
+**Step 3.** Plot data points onto polygon 
+```
+PolygonMap <- addPolygons(PolygonMap, data = krameria_Poly_1[[1]])
+PolygonMap <- addCircleMarkers(PolygonMap, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude)
 PolygonMap
 ```
-
-**Step 5.** Calculate the area of our species distribution in Kilometers and export calculated area
+**Step 4.** Calculate the area of our species distribution in Kilometers and export calculated area
 ```
-Krameria_erecta_Area <- area(Krameria_erecta_Poly_1[[1]]) /1000000
-Krameria_erecta_Area
-capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")                        
-```
-**Step 6.** Saving to polygon
+krameria_Area <- area(krameria_Poly_1[[1]]) /1000000
+krameria_Area     
 
 ```
-save(Krameria_erecta_Poly_1,file = "Krameria_erecta_Poly.Rdata")
+**Step.5 Save Area as .txt
 ```
+capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")   
+```
+
 > Place the green flag on the top corner of your labtop if you have finsihed this tutorial ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
 **Congratulations you have successfully created a plant species distribution map!** 
