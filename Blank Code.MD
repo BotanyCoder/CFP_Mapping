@@ -1,3 +1,4 @@
+```
 setwd("/Users/....") 
 getwd()
 
@@ -89,6 +90,7 @@ krameria_Area
 #Saves the area calculated as a text file
 capture.output(krameria_Area, file = "krameria_area.txt")
 
+```
 ## Step 1: Copy asd paste the section of code above.
 ####  Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
 ## Step 2: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
