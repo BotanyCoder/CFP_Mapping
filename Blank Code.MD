@@ -95,7 +95,8 @@ capture.output(krameria_Area, file = "krameria_area.txt")
 ####  Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
 ## Step 2: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
 #### Variables that say "Genus species" should be replaced with the name of your species in this same format, you can use find and replace to replace EXAMPLE quickly
-## Step 3: Run code up to the filtering step, check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
+## Step 3: Run code up to the filtering step
+#### Check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
 
 [Jepson](https://ucjeps.berkeley.edu/eflora/)
 
