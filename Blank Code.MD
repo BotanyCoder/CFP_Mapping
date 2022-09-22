@@ -17,7 +17,7 @@ library(raster)
 #Import data
 data <- read.csv("Example.csv")
 head(data)
-Example <- data
+Example <- data %>% filter(!is.na(decimalLatitude)) %>% filter(!is.na(decimalLongitude))
 
 #Create a preliminary plot of the data
 plot(Example$decimalLongitude, Example$decimalLatitude)
@@ -45,7 +45,7 @@ report_Example <- clean_coordinates(x = Example,
 flags_Example <- Example[!report_Example$.summary,]
 
 #Exclude flagged occurrences
-clean_Example <- Example[report_krameria$.summary,]
+clean_Example <- Example[report_Example$.summary,]
 
 #Plot the flagged data set as well as the non-flagged species
 plot(report_Example, lon = "decimalLongitude", lat = "decimalLatitude")
@@ -70,7 +70,7 @@ write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
 # IMPORTANT: if you use "manual filtering" replace EXAMPLE_dat_cl by Example_dat_cl2 in the code below
 
 #Create a polygon of the total plant distribution
-Example_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
+Example_Poly_1 <- getDynamicAlphaHull(clean_Example, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
                                       coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
                                       proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, alphaCap = 100, verbose = TRUE)
 
@@ -78,7 +78,7 @@ Example_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
 PolygonMap <- addPolygons(PolygonMap, data = Example_Poly_1[[1]])
-PolygonMap <- addCircleMarkers(PolygonMap, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude,color= 'red')
+PolygonMap <- addCircleMarkers(PolygonMap, lng=clean_Example$decimalLongitude, lat = clean_Example$decimalLatitude,color= 'red')
 PolygonMap
 
 #Save the polygon
