@@ -15,21 +15,21 @@ library(rangeBuilder)
 library(raster)
 
 #Import data
-data <- read.csv("Krameria_erecta_geo.csv")
+data <- read.csv("Example.csv")
 head(data)
-krameria <- data
+Example <- data
 
 #Create a preliminary plot of the data
-plot(krameria$decimalLongitude, krameria$decimalLatitude)
+plot(Example$decimalLongitude, Example$decimalLatitude)
 
 #Create an interactive map for points
 PointMap <- leaflet()
 PointMap <- addTiles(PointMap)
-PointMap <- addCircleMarkers(PointMap, lng=krameria$decimalLongitude, lat = krameria$decimalLatitude)
+PointMap <- addCircleMarkers(PointMap, lng=Example$decimalLongitude, lat = Example$decimalLatitude)
 PointMap
 
 #This section will filter data that does not meet the parameters mentioned below, changing the value of outliers_mtp = 5, increases the value will encompass more data increase your area while decreasing the values will decrease your distribution area
-report_krameria <- clean_coordinates(x = krameria, 
+report_Example <- clean_coordinates(x = Example, 
                                    lon = "decimalLongitude", 
                                    lat = "decimalLatitude",
                                    countries = "countryCode",
@@ -42,53 +42,53 @@ report_krameria <- clean_coordinates(x = krameria,
                                    outliers_size = 100)
 
 #Isolate flagged occurrences
-flags_krameria <- krameria[!report_krameria$.summary,]
+flags_Example <- Example[!report_Example$.summary,]
 
 #Exclude flagged occurrences
-clean_krameria <- krameria[report_krameria$.summary,]
+clean_Example <- Example[report_krameria$.summary,]
 
 #Plot the flagged data set as well as the non-flagged species
-plot(report_krameria, lon = "decimalLongitude", lat = "decimalLatitude")
+plot(report_Example, lon = "decimalLongitude", lat = "decimalLatitude")
 
 #Plot the filtered plant distribution 
 PointMap2 <- leaflet()
 PointMap2 <- addTiles(PointMap2)
-PointMap2 <- addCircleMarkers(PointMap2, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude, color= 'red')
+PointMap2 <- addCircleMarkers(PointMap2, lng=clean_Example$decimalLongitude, lat = clean_Example$decimalLatitude, color= 'red')
 PointMap2
 
 # save clean dataset
-write.csv(clean_krameria, file = "Krameria_erecta_geo_cl.csv")
+write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
 
 #If you need to do "manual cleaning" you can use dplyr to remove specific points from your dataset
 #Just remove the # from the line and add the necessary parameters
 #For removing points based only on latitude:
-#EXAMPLE_dat_cl2 <- EXAMPLE_dat_cl %>% filter(decimalLatitude < 1)
+#Example_dat_cl2 <- Example_dat_cl %>% filter(decimalLatitude < 1)
 
 #For removing points based only on longitude:
-#EXAMPLE_dat_cl2 <- EXAMPLE_dat_cl %>% filter(decimalLongitude < 1)
+#Example_dat_cl2 <- Example_dat_cl %>% filter(decimalLongitude < 1)
 
-# IMPORTANT: if you use "manual filtering" replace EXAMPLE_dat_cl by EXAMPLE_dat_cl2 in the code below
+# IMPORTANT: if you use "manual filtering" replace EXAMPLE_dat_cl by Example_dat_cl2 in the code below
 
 #Create a polygon of the total plant distribution
-krameria_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
+Example_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
                                       coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
                                       proj = "+proj=longlat +datum=WGS84", alphaIncrement = 1, alphaCap = 100, verbose = TRUE)
 
 #Create an interactive map
 PolygonMap <- leaflet()
 PolygonMap <- addTiles(PolygonMap)
-PolygonMap <- addPolygons(PolygonMap, data = krameria_Poly_1[[1]])
+PolygonMap <- addPolygons(PolygonMap, data = Example_Poly_1[[1]])
 PolygonMap <- addCircleMarkers(PolygonMap, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude,color= 'red')
 PolygonMap
 
 #Save the polygon
-save(krameria_Poly_1, file = "Krameria_erecta_poly.Rdata")
+save(Example_Poly_1, file = "Example_erecta_poly.Rdata")
 
 #Calculate the area of the polygon
-krameria_Area <- area(krameria_Poly_1[[1]]) /1000000
-krameria_Area
+Example_Area <- area(Example_Poly_1[[1]]) /1000000
+Example_Area
 #Saves the area calculated as a text file
-capture.output(krameria_Area, file = "krameria_area.txt")
+capture.output(Example_Area, file = "Example_area.txt")
 
 ```
 ## Step 1: Copy asd paste the section of code above.
