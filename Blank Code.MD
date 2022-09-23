@@ -103,9 +103,9 @@ capture.output(Example_Area, file = "Example_area.txt")
 [eFlora](http://www.efloras.org/)
 
 ## Step 4: save the following outputs
-####        -code for your species (EXAMPLE_code.R)
-####        -polygon (.Rdata)
-####        -text file of area (.txt)
-####        -filtered georeferenced data (.csv)
+####        -code for your species (code.R)
+####        -polygon (code_poly.Rdata)
+####        -text file of area (code.txt)
+####        -filtered georeferenced data (code.csv)
 ## Step 5: Upload all outputs to the Shared Drive
 #### Google Drive > Shared Drives > CFP_maps > Outputs (code, polygon, text file) > *create* "Your Species" folder > upload outputs
