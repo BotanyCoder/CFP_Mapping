@@ -15,7 +15,7 @@ library(rangeBuilder)
 library(raster)
 
 #Import data
-data <- read.csv("Example.csv")
+data <- read.csv("SpeciesData.csv")
 head(data)
 Example <- data %>% filter(!is.na(decimalLatitude)) %>% filter(!is.na(decimalLongitude))
 
