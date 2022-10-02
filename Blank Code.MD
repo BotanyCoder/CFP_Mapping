@@ -82,7 +82,7 @@ PolygonMap <- addCircleMarkers(PolygonMap, lng=clean_Example$decimalLongitude, l
 PolygonMap
 
 #Save the polygon
-save(Example_Poly_1, file = "Example_erecta_poly.Rdata")
+save(Example_Poly_1, file = "Example_poly.Rdata")
 
 #Calculate the area of the polygon
 Example_Area <- area(Example_Poly_1[[1]]) /1000000
