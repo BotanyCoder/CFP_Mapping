@@ -106,6 +106,6 @@ capture.output(Example_Area, file = "Example_area.txt")
 ####        -code for your species (code.R)
 ####        -polygon (code_poly.Rdata)
 ####        -text file of area (code.txt)
-####        -filtered georeferenced data (code.csv)
+####        -filtered georeferenced data (code_clean.csv)
 ## Step 5: Upload all outputs to the Shared Drive
 #### Google Drive > Shared Drives > CFP_maps > Outputs (code, polygon, text file) > *create* "Your Species" folder > upload outputs
