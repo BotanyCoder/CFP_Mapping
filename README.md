@@ -8,7 +8,7 @@ The purpose of the project is to use Geodata collected from the Global Biodivers
 
 This tutorial provides step by step instructions with pre-filtered data to show how the code works and how to clean coordinates that may misrepresent a species disabrution. 
 
-# Blank Code with Instruction
+# Blank Code with Instructions
 [Blank Code](https://github.com/BotanyCoder/CFP_Mapping/blob/main/Blank%20Code.MD)
  
  
