@@ -29,6 +29,7 @@ PointMap <- addCircleMarkers(PointMap, lng=Example$decimalLongitude, lat = Examp
 PointMap
 
 #This section will filter data that does not meet the parameters mentioned below, changing the value of outliers_mtp = 5, increases the value will encompass more data increase your area while decreasing the values will decrease your distribution area
+#If your data is being unnecessarily removed, increase mtp or change outlier_mtp to NULL and work with outliers_td
 report_Example <- clean_coordinates(x = Example, 
                                    lon = "decimalLongitude", 
                                    lat = "decimalLatitude",
