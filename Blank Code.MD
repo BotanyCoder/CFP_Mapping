@@ -57,18 +57,20 @@ PointMap2 <- addTiles(PointMap2)
 PointMap2 <- addCircleMarkers(PointMap2, lng=clean_Example$decimalLongitude, lat = clean_Example$decimalLatitude, color= 'red')
 PointMap2
 
-# save clean dataset
-write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
+
 
 #If you need to do "manual cleaning" you can use dplyr to remove specific points from your dataset
 #Just remove the # from the line and add the necessary parameters
 #For removing points based only on latitude:
-#Example_dat_cl2 <- Example_dat_cl %>% filter(decimalLatitude < 1)
+#clean_Example <- clean_Example %>% filter(decimalLatitude < 1)
 
 #For removing points based only on longitude:
-#Example_dat_cl2 <- Example_dat_cl %>% filter(decimalLongitude < 1)
+#clean_Example <- clean_Example %>% filter(decimalLongitude < 1)
 
-# IMPORTANT: if you use "manual filtering" replace EXAMPLE_dat_cl by Example_dat_cl2 in the code below
+# save clean dataset
+write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
+
+# IMPORTANT: make sure the output match the imputs
 
 #Create a polygon of the total plant distribution
 Example_Poly_1 <- getDynamicAlphaHull(clean_Example, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
