@@ -57,10 +57,8 @@ PointMap2 <- addTiles(PointMap2)
 PointMap2 <- addCircleMarkers(PointMap2, lng=clean_Example$decimalLongitude, lat = clean_Example$decimalLatitude, color= 'red')
 PointMap2
 
-
-
 #If you need to do "manual cleaning" you can use dplyr to remove specific points from your dataset
-#Just remove the # from the line and add the necessary parameters
+#Just remove the # from the line and add the necessary parameters, once completed repeat creating PointMap2 to check that the point was removed
 #For removing points based only on latitude:
 #clean_Example <- clean_Example %>% filter(decimalLatitude < 1)
 
