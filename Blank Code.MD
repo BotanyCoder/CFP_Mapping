@@ -93,20 +93,20 @@ capture.output(Example_Area, file = "Example_area.txt")
 
 ```
 ## Step 1: Copy and paste the section of code above.
-####  Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
+Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
 ## Step 2: Change EXAMPLE variables into your species code name (first 2 letters of genus plus first two letters of species e.i. gesp) and load your species dataset
-#### Variables that say "Genus species" should be replaced with the name of your species in this same format, you can use find and replace to replace EXAMPLE quickly
+Variables that say "EXAMPLE" should be replaced with the name of your species (ex, Krameria_eracta) in this same format, you can use the find function to replace every instance of EXAMPLE quickly.
 ## Step 3: Run code up to the filtering step
-#### Check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
+Check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
 
-[Jepson](https://ucjeps.berkeley.edu/eflora/)
+- [Jepson](https://ucjeps.berkeley.edu/eflora/)
 
-[eFlora](http://www.efloras.org/)
+- [eFlora](http://www.efloras.org/)
 
 ## Step 4: save the following outputs
-####        -code for your species (code.R)
-####        -polygon (code_poly.Rdata)
-####        -text file of area (code.txt)
-####        -filtered georeferenced data (code_clean.csv) 
+- code for your species (code.R)
+- polygon (code_poly.Rdata)
+- text file of area (code.txt)
+- filtered georeferenced data (code_clean.csv) 
 ## Step 5: Upload all outputs to the Shared Drive
 #### Google Drive > Shared Drives > CFP_maps > Outputs (code, polygon, text file) > *create* "Your Species" folder > upload outputs
