@@ -149,11 +149,6 @@ Plotting flagged and non-flagged species
 ```
 plot(report_krameria, lon = "decimalLongitude", lat = "decimalLatitude")
 ```
-Creating a basemap of for our spcies
-```
-basemap2 <-  get_map(location = c(-125, 10, -95, 40), zoom =5)
-ggmap(basemap2)
-```
 Plot the filtered plant distribution 
 ```
 PointMap2 <- leaflet()
