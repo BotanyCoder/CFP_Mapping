@@ -221,7 +221,7 @@ krameria_Area <- area(krameria_Poly_1[[1]]) /1000000
 krameria_Area     
 
 ```
-**Step.5 Save Area as .txt
+**Step.** 5 Save Area as .txt
 ```
 capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")   
 ```
