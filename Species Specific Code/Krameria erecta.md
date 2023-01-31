@@ -156,7 +156,7 @@ PointMap2 <- addTiles(PointMap2)
 PointMap2 <- addCircleMarkers(PointMap2, lng=clean_krameria$decimalLongitude, lat = clean_krameria$decimalLatitude)
 PointMap2
 ```
-If you'd like to download the species distribution map directly
+If you'd like to download the species distribution map directly # doesnt work atm
 ```
 ggsave(filename = "Krameria_erecta_distribuition.pdf")
 ```
@@ -193,7 +193,7 @@ ggmap(basemap2) + geom_point(data = geodata3, aes(x=decimalLongitude, y=decimalL
 > Change the flag back to yellow for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
 
 
-**Step 1.** Creating the polygon
+**Step 1.** Creating the polygon # doesnt work atm
 ```
 krameria_Poly_1 <- getDynamicAlphaHull(clean_krameria, fraction = 0.95, partCount = 4, buff = 1000, initialAlpha = 3,
                                       coordHeaders = c('decimalLongitude', 'decimalLatitude'), clipToCoast = 'terrestrial',
