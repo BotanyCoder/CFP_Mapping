@@ -1,7 +1,7 @@
 # Getting Started with R
 
 Based on a document created by: Jason Pienaar and Tom Miller
-Edited by: CCG and OMV 2022
+Edited by: CCG and OMV 2023
 
 ## Outline
 
@@ -42,7 +42,7 @@ Anything worth doing, from losing weight to getting a degree, takes time. Learni
 ### on Cal Poly Humboldt labs:
 Although you can download in your personal computer (and you are encouraged to do so – find instructions on Canvas), we will work on a standardized set up on the school lab. 
 
-> Add the yellow flag to the right corner of your monitor ![](img/yellow.jpeg)
+> Add the flag to the right corner of your monitor ![](img/yellow.jpeg)
 
 * We can open Rstudio by simply typing `Rstudio` in the search bar of the OS.
  
@@ -120,12 +120,12 @@ Run the following calculations:
 
 And: The year you were born – today’s date (just the day) * your favorite number
 
-> Change your flag to green if you are good to continue ![](img/green.jpeg)
+> remove your flag if you are good to continue ![](img/green.jpeg)
 
 ## R functions
 R is a functional programming language meaning that pretty much everything we do in R is in terms of functions. R includes hundreds of built-in functions for mathematical calculations (including matrix algebra, which is extremely useful in statistics), data analyses, graphing, etc. Values passed to functions are specified within parenthesis after the function name. Here are some simple examples to try:
 
-> Add the yellow flag to the right corner of your monitor ![](img/yellow.jpeg)
+> Add the flag to the right corner of your monitor ![](img/yellow.jpeg)
 
 ```
 log(100)
@@ -181,14 +181,14 @@ Vector2[21]
 
 returns the 21st element of the vector.
 
-> Change your flag to green if you are good to continue ![](img/green.jpeg)
+> Remove your flag if you are good to continue ![](img/green.jpeg)
 
 ### Lists
 While vectors only contain numbers, lists can contain mixed types of elements in R. You can find numbers, strings (characters), logical arguments and even lists nested within lists. 
 
 Create a list using the following code:
 
-> Add the yellow flag to the right corner of your monitor ![](img/yellow.jpeg)
+> Add flag to the right corner of your monitor ![](img/yellow.jpeg)
 
 ```
 list_data=list(color='red', vector=c(21,23,43), password=TRUE, Temperature=21.5)
@@ -213,3 +213,6 @@ Practice your skills with variables and vectors! For each of the following items
 4. Use the function var to return the variances of the two variables
 5. The function “plot” will create a separate window on your screen with a standard
 labeled plot. Type plot(variable) to create a scatter plot of your variables against their indices, substituting your variable name into the brackets, and also plot(variable1, variable2) to plot your variables against each other. Paste your plot to the document you turn in.
+
+> Remove your flag if you are good to continue ![](img/green.jpeg)
+
