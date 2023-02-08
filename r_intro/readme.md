@@ -122,10 +122,30 @@ And: The year you were born – today’s date (just the day) * your favorite nu
 
 > remove your flag if you are good to continue ![](img/green.jpeg)
 
+## Variables
+R can store numbers and objects as variables in its temporary memory.
+
+> Add the flag to the right corner of your monitor ![](img/yellow.jpeg)
+
+Run the following code
+```
+a = 49923*199
+b = 3333+111
+c = 322+543 * 234+23
+```
+What is different?
+
+Now run:
+```
+a + b + c
+```
+
+What would you type if you wanted to save the previous calculation in a variable?
+
 ## R functions
 R is a functional programming language meaning that pretty much everything we do in R is in terms of functions. R includes hundreds of built-in functions for mathematical calculations (including matrix algebra, which is extremely useful in statistics), data analyses, graphing, etc. Values passed to functions are specified within parenthesis after the function name. Here are some simple examples to try:
 
-> Add the flag to the right corner of your monitor ![](img/yellow.jpeg)
+
 
 ```
 log(100)
