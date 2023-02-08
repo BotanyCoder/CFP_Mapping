@@ -8,9 +8,9 @@ The purpose of the project is to use Geodata collected from the Global Biodivers
 ## Tutorial for mapping a single species
 This tutorial provides step by step instructions with pre-filtered data to show how the code works and how to clean coordinates that may misrepresent a species disabrution. 
 
-[Krameria erecta](https://github.com/BotanyCoder/CFP_Mapping/blob/main/Species%20Specific%20Code/Krameria%20erecta.md)
+[Krameria erecta](https://github.com/BotanyCoder/CFP_Mapping/krameria_example)
 
 ## Blank Code with Instructions
-[Blank Code](https://github.com/BotanyCoder/CFP_Mapping/blob/main/Blank%20Code.MD)
+[Blank Code](https://github.com/BotanyCoder/CFP_Mapping/blank_code)
  
  
