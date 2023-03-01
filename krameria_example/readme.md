@@ -1,7 +1,7 @@
 # Mapping Tutorial for **_Krameria erecta_**
 This is a bare-bones tutorial for running through mapping **_Krameria erecta_**, look at CFP_Mapping Skelton_code.md for a tutorial with more in-depth explanations.
 
-> Add the yellow flag to the right corner of your laptop ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
+> Add the flag to the right corner of your laptop ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
 
 ### Set a working directory.
 I chose to call my directory "CFP_Mapping"
@@ -25,7 +25,7 @@ library(rangeBuilder)
 library(leaflet)
 library(raster)
 ```
-> Change your flag to green once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
+> Remove your flag once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
 If you ran into an issue with the package "CoordinateCleaner" and "terra" not being update, follow these steps.
 The error seems to occur due to a older verison of "terra" being installed.
@@ -33,7 +33,7 @@ The error seems to occur due to a older verison of "terra" being installed.
 
 
 
-<details><summary> CLCK ME </summary>
+<details><summary> CLICK ME </summary>
   <p>
     
 **Step 1.** Download and instal [RTools](https://cran.r-project.org/bin/windows/Rtools/rtools40.html)
@@ -67,12 +67,12 @@ The package should be updated and no error message should appear
   </p>
   </details>
   
-> Change your flag to green once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/155015835-3816eda1-6959-4b81-abe1-1816a605dd8c.png)
+> Remove your flag once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/155015835-3816eda1-6959-4b81-abe1-1816a605dd8c.png)
 
 
 # Downloading the Dataset and Ploting 
 
->Change back to yellow flag for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
+>Add the flag to your laptop ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
 
 We need to download geodata which can be found in the link below, make sure to download as an .csv
 
@@ -105,9 +105,9 @@ PointMap <- addCircleMarkers(PointMap, lng=krameria$decimalLongitude, lat = kram
 PointMap
 ```
 
- > Place the green flag on the top corner of your labtop if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
+ > Remove the flag if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 # Ploting our data onto the basemap
-> Change the flag back to yellow for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
+> Add the flag to the corner of your screen ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
 
 ## Beginning of coordinate cleaning
 <details><summary> How coordinate cleaning works </summary>
@@ -187,10 +187,10 @@ ggmap(basemap2) + geom_point(data = geodata3, aes(x=decimalLongitude, y=decimalL
 </p>  
 </details>
  
-> Place the green flag on the top corner of your labtop if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
+> Remove the flag from your screen if you are ready to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
 # Beginning on Polygon work 
-> Change the flag back to yellow for this section ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
+> Add the flag to the corner of your screen ![image](https://user-images.githubusercontent.com/99222277/154882335-f33380f0-1527-4047-b2b1-972577050e7b.png)
 
 
 **Step 1.** Creating the polygon # doesnt work atm
@@ -221,6 +221,6 @@ krameria_Area
 capture.output(Krameria_erecta_Area, file = "Krameria_erecta_area")   
 ```
 
-> Place the green flag on the top corner of your labtop if you have finsihed this tutorial ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
+> Remove the flag from your laptop if you have finsihed this tutorial ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
 **Congratulations you have successfully created a plant species distribution map!** 
