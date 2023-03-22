@@ -83,10 +83,13 @@ write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
 # IMPORTANT: make sure the output make sense and is properly named
 
 ```
-## Step 1: Copy and paste the section of code above.
+## Step 1: pick a species to work on, sign the `species list`, create a folder in your computer using its code
+The species code (ex, KRER for Krameria_eracta) comprises the first two letters of the genus ans the fisrt two letters for the epithet. Your code should be used to name the outputs, for examle KRER.R and KRER.csv  
+## Step 2: download the unfiltered dataset from the 'ocurrences by species' folder
+## Step 3: Copy, paste, and save in a new file the code above.
 Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
-## Step 2: load your species dataset changing the name of the input file
-## Step 3: Run code up to the filtering step
+## Step 4: load your species dataset changing the name of the input file
+## Step 5: Run code up to the filtering step
 Check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
 
 - [Jepson](https://ucjeps.berkeley.edu/eflora/)
@@ -95,9 +98,8 @@ Check the Jepson and Flora of North America to make sure the filter is appropiat
 
 - [efloramex] (https://efloramex.ib.unam.mx/)
 
-## Step 4: save the following outputs
+## Step 6: save the following outputs
 - code for your species (code.R)
 - filtered georeferenced data (code_clean.csv)
-The species code (ex, KRER for Krameria_eracta) comprises the first two letters of the genus ans the fisrt two letters for the epithet. Your code should be used to name the outputs, for examle KRER.R and KRER.csv  
-## Step 5: Upload all outputs to the Shared Drive
+## Step 7: Upload all outputs to the Shared Drive
 #### Google Drive > Shared Drives > CFP_maps > Outputs (code, clean datset) > *create* "Your Species code" folder > upload outputs
