@@ -105,4 +105,4 @@ Check the Jepson and Flora of North America to make sure the filter is appropiat
 - code for your species (code.R)
 - filtered georeferenced data (code_clean.csv)
 ## Step 7: Upload all outputs to the Shared Drive
-#### Google Drive > Shared Drives > CFP_maps > Outputs (code, clean datset) > *create* "Your Species code" folder > upload outputs
+#### Google Drive > Shared Drives > CFP_maps > Outputs (code, clean datset) > drag and drop your folder for an easy upload
