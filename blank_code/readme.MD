@@ -19,11 +19,11 @@ library(raster)
 
 #Import data
 #### ==> REPLACE FILE NAME <==
-Example <- read.csv("SpeciesData.csv")
+raw_data <- read.csv("SpeciesData.csv")
 head(Example)
 
 # remove data with out georreference
-Example <- data %>% filter(!is.na(decimalLatitude)) %>% filter(!is.na(decimalLongitude))
+Example <- raw_data %>% filter(!is.na(decimalLatitude)) %>% filter(!is.na(decimalLongitude))
 
 #Create a preliminary plot of the data
 plot(Example$decimalLongitude, Example$decimalLatitude)
@@ -33,6 +33,9 @@ PointMap <- leaflet()
 PointMap <- addTiles(PointMap)
 PointMap <- addCircleMarkers(PointMap, lng=Example$decimalLongitude, lat = Example$decimalLatitude)
 PointMap
+
+#### ==> LOOK CLOSELY AT THIS MAP <==
+#### ==> DOES IT MAKES SENSE? <==
 
 #This section will filter data that does not meet the parameters mentioned below, changing the value of outliers_mtp = 5, increases the value will encompass more data increase your area while decreasing the values will decrease your distribution area
 #If your data is being unnecessarily removed, increase mtp or change outlier_mtp to NULL and work with outliers_td
@@ -86,8 +89,8 @@ write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
 ## Step 1: pick a species to work on, sign the `species list`, create a folder in your computer using its code
 The species code (ex, KRER for Krameria_eracta) comprises the first two letters of the genus ans the fisrt two letters for the epithet. Your code should be used to name the outputs, for examle KRER.R and KRER.csv  
 ## Step 2: download the unfiltered dataset from the 'ocurrences by species' folder
-## Step 3: Copy, paste, and save in a new file the code above.
 Go to: Google Drive > Shared Drives > CFP_maps > Occurences by species > Download your intended species
+## Step 3: Copy, paste, and save in a new file the code above. Make sure your working directory is properly set.
 ## Step 4: load your species dataset changing the name of the input file
 ## Step 5: Run code up to the filtering step
 Check the Jepson and Flora of North America to make sure the filter is appropiate. Usually species with lots of ocurrences need the filtering process while species with only a handful can skip the filtering process.
