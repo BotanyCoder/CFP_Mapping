@@ -1,4 +1,5 @@
 ```
+#### ==> SET PROPER DIRECTORY <==
 # You can set your working directory by cliking on "session" and then "set working directory"
 setwd("/Users/....") 
 getwd()
