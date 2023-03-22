@@ -83,7 +83,7 @@ PointMap2
 #### ==> REPLACE FILE NAME <==
 write.csv(clean_Example, file = "SpeciesCode_Clean.csv")
 
-# IMPORTANT: make sure the output make sense and is properly named
+# IMPORTANT: make sure the outputs make sense and are properly named
 
 ```
 ## Step 1: pick a species to work on, sign the `species list`, create a folder in your computer using its code
