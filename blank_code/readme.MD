@@ -99,7 +99,7 @@ Check the Jepson and Flora of North America to make sure the filter is appropiat
 
 - [eFlora](http://www.efloras.org/)
 
-- [efloramex] (https://efloramex.ib.unam.mx/)
+- [efloramex](https://efloramex.ib.unam.mx/)
 
 ## Step 6: save the following outputs
 - code for your species (code.R)
