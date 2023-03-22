@@ -2,26 +2,22 @@
 #### ==> SET PROPER DIRECTORY <==
 # You can set your working directory by cliking on "session" and then "set working directory"
 setwd("/Users/....") 
-getwd()
+dir()
 
 install.packages("rnaturalearth")
 
 #install.packages("leaflet")
 #install.packages("CoordinateCleaner")
 #install.packages("dpylr")
-#install.packages("rangeBuilder")
-#install.packages("raster")
 
 library(leaflet)
 library(CoordinateCleaner)
 library(dplyr)
-library(rangeBuilder)
-library(raster)
 
 #Import data
 #### ==> REPLACE FILE NAME <==
 raw_data <- read.csv("SpeciesData.csv")
-head(Example)
+head(raw_data)
 
 # remove data with out georreference
 Example <- raw_data %>% filter(!is.na(decimalLatitude)) %>% filter(!is.na(decimalLongitude))
@@ -37,6 +33,9 @@ PointMap
 
 #### ==> LOOK CLOSELY AT THIS MAP <==
 #### ==> DOES IT MAKES SENSE? <==
+#### CALIFORNIA https://ucjeps.berkeley.edu/eflora/
+#### USA http://www.efloras.org/
+#### MEXICO https://efloramex.ib.unam.mx/
 
 #This section will filter data that does not meet the parameters mentioned below, changing the value of outliers_mtp = 5, increases the value will encompass more data increase your area while decreasing the values will decrease your distribution area
 #If your data is being unnecessarily removed, increase mtp or change outlier_mtp to NULL and work with outliers_td
