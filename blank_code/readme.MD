@@ -69,7 +69,9 @@ PointMap2
 #### ==> CHECK THAT DISTRIBUTION MAKES SENSE <==
 #### CALIFORNIA https://ucjeps.berkeley.edu/eflora/
 #### USA http://www.efloras.org/
+#### USA http://bonap.net/NAPA/Genus/Traditional/County
 #### MEXICO https://efloramex.ib.unam.mx/
+
 
 #If you need to do "manual cleaning" you can use dplyr to remove specific points from your dataset
 #Just remove the # from the line and add the necessary parameters, once completed repeat creating PointMap2 to check that the point was removed
@@ -100,6 +102,8 @@ Check the Jepson and Flora of North America to make sure the filter is appropiat
 - [eFlora](http://www.efloras.org/)
 
 - [efloramex](https://efloramex.ib.unam.mx/)
+
+- [BONAP](http://bonap.net/NAPA/Genus/Traditional/County)
 
 ## Step 6: save the following outputs
 - code for your species (code.R)
