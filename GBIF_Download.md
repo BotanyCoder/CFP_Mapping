@@ -34,7 +34,7 @@ head(data)
 
 ```
 
-species <- read.csv("ENTER GBIF FILE HERE.csv", head=TRUE sep = "\t")
+species <- read.csv("ENTER GBIF FILE HERE.csv", head=TRUE, sep = "\t")
 
 ```
 Your data should be seperated now, to check this run:
