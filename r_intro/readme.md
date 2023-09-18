@@ -460,6 +460,8 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 
 ```
 
+</details>
+
 ## Creating a map for a single species
 1. Create a subdataset for a single species
 ```
