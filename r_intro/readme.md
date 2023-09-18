@@ -459,3 +459,81 @@ library(ggplot2)
 ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom_point()
 
 ```
+
+## Creating a map for a single species
+1. Create a subdataset for a single species
+```
+abla <- geodata2 %>% filter(species == "Abronia latifolia")
+head(abla)
+tail(abla)
+```
+
+2. Create a name for the resulting pdf file with the map
+```
+pdfName <- "Abronia latifolia.pdf" 
+```
+
+3. Draw the map
+```
+ggmap(basemap) + geom_point(data = abla, aes(x=decimalLongitude, y=decimalLatitude)) + ggtitle("Abronia latifolia")
+
+```
+
+4. Save the map
+```
+ggsave(filename = pdfName, plot=last_plot()) 
+```
+
+
+5. Create a name for the csv file
+```
+csv_name <- "Abronia_latifolia.csv"
+```
+
+6. Save the dataset just for one species, Abronia latifolia
+```
+write.csv(abla, csv_name)
+```
+
+
+Cool!
+
+## Using a loop to draw a map for each species
+
+In R a loop uses the floowing logic
+
+for (item in item_list){
+	perform_action_1
+	perform_action_2
+	etc
+}
+
+In our case our loop would look like this, notice that it contains every step used previously to create a single map
+```
+for (x in (Ab_sp$species)){
+	print(x)
+	# 1 creating a dataset for only one species
+	sp_data <- geodata2 %>% filter(species == x)
+	print("subset of ocurrences created")
+	
+	# 2 creating file name for map
+	file_title <- paste(x, ".pdf", sep = "")
+
+	# 3 creating the map
+	ggmap(basemap) + geom_point(data = sp_data, aes(x=decimalLongitude, y=decimalLatitude), color ="blue") + ggtitle(x) # creating the map
+	print("map created")
+
+	# 4 saving plot in pdf						
+	ggsave(filename = file_title, plot=last_plot()) 
+	print(file_title)
+
+	# 5 creating file name for dataset for every species
+	dataset_title <- paste(x, ".csv", sep = "")
+
+	# 6 saving dataset for species
+	write.csv(sp_data, dataset_title)	
+}
+
+```
+
+After runing the code you should be be able to see 23 pdf files in your working folder!
