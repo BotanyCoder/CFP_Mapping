@@ -463,6 +463,14 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 </details>
 
 ## Creating a map for a single species
+Install and load required packages
+```
+install.packages("tidyverse")
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+
 1. Create a subdataset for a single species
 ```
 abla <- geodata %>% filter(species == "Abronia latifolia")
