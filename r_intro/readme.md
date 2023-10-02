@@ -465,7 +465,7 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 ## Creating a map for a single species
 1. Create a subdataset for a single species
 ```
-abla <- geodata2 %>% filter(species == "Abronia latifolia")
+abla <- geodata %>% filter(species == "Abronia latifolia")
 head(abla)
 tail(abla)
 ```
@@ -512,6 +512,9 @@ for (item in item_list){
 
 In our case our loop would look like this, notice that it contains every step used previously to create a single map
 ```
+#0 create a list of species
+Ab_sp <- geodata %>% group_by(species) %>% tally()
+
 for (x in (Ab_sp$species)){
 	print(x)
 	# 1 creating a dataset for only one species
