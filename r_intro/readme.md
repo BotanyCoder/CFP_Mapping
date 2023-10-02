@@ -485,6 +485,7 @@ pdfName <- "Abronia latifolia.pdf"
 
 3. Draw the map
 ```
+basemap = map_data("world")
 ggmap(basemap) + geom_point(data = abla, aes(x=decimalLongitude, y=decimalLatitude)) + ggtitle("Abronia latifolia")
 
 ```
