@@ -478,6 +478,9 @@ library(sf)
 
 1. Create a subdataset for a single species
 ```
+data = read.csv("abronia_3_red.csv")
+geodata = data %>% filter(!is.na(decimalLatitude))
+
 abla <- geodata %>% filter(species == "Abronia latifolia")
 head(abla)
 tail(abla)
