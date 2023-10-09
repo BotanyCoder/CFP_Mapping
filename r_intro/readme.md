@@ -462,6 +462,7 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 
 </details>
 
+# Day 3
 ## Creating a map for a single species
 Install and load required packages
 ```
