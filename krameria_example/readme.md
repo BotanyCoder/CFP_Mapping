@@ -15,8 +15,6 @@ setwd("~/CFP_Mapping")
 install.packages("leaflet")
 install.packages("CoordinateCleaner")
 install.packages("dpylr")
-install.packages("rangeBuilder")
-install.packages("raster")
 ```
 
 ### Now we can load the packages
@@ -193,4 +191,4 @@ ggmap(basemap2) + geom_point(data = geodata3, aes(x=decimalLongitude, y=decimalL
 
 
 
-**Congratulations you have successfully created a plant species distribution map!** 
+**Congratulations you have successfully filtered the points for Krameria erecta!** 
