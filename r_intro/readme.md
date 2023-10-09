@@ -465,9 +465,14 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 ## Creating a map for a single species
 Install and load required packages
 ```
+install.packages("OpenStreetMap")
 install.packages("tidyverse")
+install.packages("sf")
 install.packages("ggplot2")
 library(ggplot2)
+library(OpenStreetMap)
+library(tidyverse)
+library(sf)
 ```
 
 
@@ -485,9 +490,26 @@ pdfName <- "Abronia latifolia.pdf"
 
 3. Draw the map
 ```
-basemap = map_data("world")
-ggplot(basemap) + geom_point(data = abla, aes(x=decimalLongitude, y=decimalLatitude)) + ggtitle("Abronia latifolia")
+  #first a base map
+    #bounding box
+lat1 <- 55; lat2 <- 30; lon1 <- -110; lon2 <- -132
+base <- openmap(c(lat2, lon1), c(lat1, lon2), zoom = 5, 
+                  type = "bing", mergeTiles = TRUE)
+    #add projection
+basemap = openproj(base)
 
+    #plot and call the map
+basemap_plt <- OpenStreetMap::autoplot.OpenStreetMap(basemap)
+basemap_plt
+
+#Map points on top of the map
+abla_map = OpenStreetMap::autoplot.OpenStreetMap(sa_map2) +
+  geom_point(data = abla,
+             aes(x= decimalLongitude, y= decimalLatitude),
+             colour = "yellow", size = 1) +
+  xlab("Longitude (°E)") + ylab("Latitude (°S)")
+  
+abla_map
 ```
 
 4. Save the map
