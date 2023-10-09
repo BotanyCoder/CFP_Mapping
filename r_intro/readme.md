@@ -503,7 +503,7 @@ basemap_plt <- OpenStreetMap::autoplot.OpenStreetMap(basemap)
 basemap_plt
 
 #Map points on top of the map
-abla_map = OpenStreetMap::autoplot.OpenStreetMap(sa_map2) +
+abla_map = OpenStreetMap::autoplot.OpenStreetMap(basemap) +
   geom_point(data = abla,
              aes(x= decimalLongitude, y= decimalLatitude),
              colour = "yellow", size = 1) +
@@ -543,32 +543,47 @@ for (item in item_list){
 
 In our case our loop would look like this, notice that it contains every step used previously to create a single map
 ```
-#0 create a list of species
-Ab_sp <- geodata %>% group_by(species) %>% tally()
+# step 0: creating a list
+Ab_sp = geodata %>% group_by(species) %>% tally()
+# step 0: creating a basemap
+lat1 <- 55; lat2 <- 15; lon1 <- -100; lon2 <- -132
+base <- openmap(c(lat2, lon1), c(lat1, lon2), zoom = 5, 
+                type = "bing", mergeTiles = TRUE)
+basemap = openproj(base)
 
+# write the loop
 for (x in (Ab_sp$species)){
-	print(x)
-	# 1 creating a dataset for only one species
-	sp_data <- geodata2 %>% filter(species == x)
-	print("subset of ocurrences created")
-	
-	# 2 creating file name for map
-	file_title <- paste(x, ".pdf", sep = "")
-
-	# 3 creating the map
-	ggmap(basemap) + geom_point(data = sp_data, aes(x=decimalLongitude, y=decimalLatitude), color ="blue") + ggtitle(x) # creating the map
-	print("map created")
-
-	# 4 saving plot in pdf						
-	ggsave(filename = file_title, plot=last_plot()) 
-	print(file_title)
-
-	# 5 creating file name for dataset for every species
-	dataset_title <- paste(x, ".csv", sep = "")
-
-	# 6 saving dataset for species
-	write.csv(sp_data, dataset_title)	
+  print(x)
+  # 1 creating a dataset for only one species
+  sp_data <- geodata %>% filter(species == x)
+  print("subset of ocurrences created")
+  
+  # 2 creating file name for map
+  file_title <- paste(x, ".pdf", sep = "")
+  print(file_title)
+  
+  # 3 creating the map
+  sp_map = OpenStreetMap::autoplot.OpenStreetMap(basemap) +
+    geom_point(data = sp_data,
+               aes(x= decimalLongitude, y= decimalLatitude),
+               colour = "yellow", size = 1) +
+    xlab("Longitude (°E)") + ylab("Latitude (°S)")
+  
+  sp_map # creating the map
+  print("map created")
+  
+  # 4 saving plot in pdf						
+  ggsave(filename = file_title, plot=last_plot()) 
+  print(file_title)
+  
+  # 5 creating file name for dataset for every species
+  dataset_title <- paste(x, ".csv", sep = "")
+  print(dataset_title)
+  
+  # 6 saving dataset for species
+  write.csv(sp_data, dataset_title)	
 }
+
 
 ```
  
