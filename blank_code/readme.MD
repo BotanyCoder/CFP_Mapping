@@ -4,7 +4,8 @@
 setwd("/Users/....") 
 dir()
 
-install.packages("rnaturalearth")
+Install rnaturalearth if you have trouble with the "seas" filtering
+#install.packages("rnaturalearth")
 
 #install.packages("leaflet")
 #install.packages("CoordinateCleaner")
