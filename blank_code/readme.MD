@@ -4,7 +4,7 @@
 setwd("/Users/....") 
 dir()
 
-Install rnaturalearth if you have trouble with the "seas" filtering
+#Install rnatural earth if you have trouble with the "seas" filtering
 #install.packages("rnaturalearth")
 
 #install.packages("leaflet")
