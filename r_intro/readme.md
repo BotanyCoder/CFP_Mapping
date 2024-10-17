@@ -465,10 +465,10 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 # Day 3
 ## Creating a map for a single species
 
-Log-in to the virtual computer or work on your lab-computer. To log into virtual labs you must be on campus, if outside campus you will need to use VPN.
+Log-in to the virtual computer or work on your lab-computer.
 
 [Click Here] (https://vlab.humboldt.edu)
-* Access ‘vLab-computer’
+* Access ‘Lab-computer’
 * Log in with your HSU information
 * Go to the search bar and search : ‘Rstudio’
 * Open R studio
