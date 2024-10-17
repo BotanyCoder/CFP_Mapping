@@ -555,7 +555,7 @@ write.csv(abla, csv_name)
 
 Cool!
 
-## Advanced: sing a loop to draw a map for each species
+## Advanced: using a loop to draw a map for each species
 <details>
   <summary>Click to see this tutorial!</summary>
 In R a loop uses the floowing logic
