@@ -464,6 +464,17 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 
 # Day 3
 ## Creating a map for a single species
+
+Log-in to the virtual computer or work on your lab-computer. To log into virtual labs you must be on campus, if outside campus you will need to use VPN.
+
+[Click Here] (https://vlab.humboldt.edu)
+* Access ‘vLab-computer’
+* Log in with your HSU information
+* Go to the search bar and search : ‘Rstudio’
+* Open R studio
+
+Open Rsutdio and start a new script, make sure to save it in your working directory. Then:
+
 Install and load required packages
 ```
 install.packages("OpenStreetMap")
@@ -475,9 +486,15 @@ library(OpenStreetMap)
 library(tidyverse)
 library(sf)
 ```
+0. Download the dasaset and set a working directory 
+[Abronia dataset](https://www.dropbox.com/s/qtjfbay88qo35fs/abronia_3_red.csv?dl=0)
 
+Set the working directory by:
+* Click on `Session`
+* Click on `Set working directory`
+* Click on `To Source File Location` 
 
-1. Create a subdataset for a single species
+2. Create a subdataset for a single species
 ```
 data = read.csv("abronia_3_red.csv")
 geodata = data %>% filter(!is.na(decimalLatitude))
