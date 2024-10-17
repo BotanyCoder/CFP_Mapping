@@ -555,8 +555,9 @@ write.csv(abla, csv_name)
 
 Cool!
 
-## Using a loop to draw a map for each species
-
+## Advanced: sing a loop to draw a map for each species
+<details>
+  <summary>Click to see this tutorial!</summary>
 In R a loop uses the floowing logic
 
 for (item in item_list){
@@ -612,3 +613,4 @@ for (x in (Ab_sp$species)){
 ```
  
 After runing the code you should be be able to see 23 pdf files in your working folder!
+<details>
