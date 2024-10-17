@@ -481,10 +481,13 @@ install.packages("OpenStreetMap")
 install.packages("tidyverse")
 install.packages("sf")
 install.packages("ggplot2")
+install.packages("dplyr")
+
 library(ggplot2)
 library(OpenStreetMap)
 library(tidyverse)
 library(sf)
+library(dplyr)
 ```
 0. Download the dasaset and set a working directory 
 [Abronia dataset](https://www.dropbox.com/s/qtjfbay88qo35fs/abronia_3_red.csv?dl=0)
