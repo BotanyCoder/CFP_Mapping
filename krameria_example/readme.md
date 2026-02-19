@@ -21,9 +21,7 @@ install.packages("dpylr")
 ```
 library(dplyr)
 library(CoordinateCleaner)
-library(rangeBuilder)
 library(leaflet)
-library(raster)
 ```
 > Remove your flag once you are good to continue ![image](https://user-images.githubusercontent.com/99222277/154882595-b2448b1c-473f-4e83-9d72-1d401ebcb5e6.png)
 
