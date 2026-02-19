@@ -518,7 +518,7 @@ pdfName <- "Abronia latifolia.pdf"
     #bounding box
 lat1 <- 55; lat2 <- 30; lon1 <- -110; lon2 <- -132
 base <- openmap(c(lat2, lon1), c(lat1, lon2), zoom = 5, 
-                  type = "bing", mergeTiles = TRUE)
+                  type = "esri-terrain", mergeTiles = TRUE)
     #add projection
 basemap = openproj(base)
 
