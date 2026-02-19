@@ -444,7 +444,7 @@ abline(model1)
 
 # Creating a map
 
-We can use vinzualization to see our points "google maps" style. For this we will use the leaflet package.
+We can use the leaflet package to see our points "google maps" style.
 
 ```
 install.packages("leaflet")
@@ -483,7 +483,7 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 
 </details>
 
-## Optional2 creating a map to save in pdf (java required)
+## Optional 2 creating a map to save in pdf (java required)
 ### Creating a map for a single species
 
 Log-in to the virtual computer or work on your lab-computer.
