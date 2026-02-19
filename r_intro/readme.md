@@ -442,7 +442,28 @@ abline(model1)
 
 > Remove your flag if you are good to continue ![](img/green.jpeg)
 
-## Optional Exercise: advance plotting
+# Creating a map
+
+We can use vinzualization to see our points "google maps" style. For this we will use the leaflet package.
+
+```
+install.packages("leaflet")
+library(leaflet)
+```
+
+In the first two lines of code we are simply creating a background map. The third line adds the points to the map.
+
+```
+PointMap <- leaflet()
+PointMap <- addTiles(PointMap)
+PointMap <- addCircleMarkers(PointMap, lng=abla$decimalLongitude,
+                             lat = abla$decimalLatitude)
+PointMap
+```
+
+Congratulations! you have created your first species distribution map!!!
+
+## Optional 1: advance plotting
 
 Ggplot can create advance figures. Install ggplot and plot the latitude of all species in a single figure color-coded by species. Adapt the following code to our data:
 
@@ -462,8 +483,8 @@ ggplot(geodata, aes(decimalLongitude, decimalLatitude, colour = species)) + geom
 
 </details>
 
-# Day 3
-## Creating a map for a single species
+## Optional2 creating a map to save in pdf (java required)
+### Creating a map for a single species
 
 Log-in to the virtual computer or work on your lab-computer.
 
@@ -555,7 +576,7 @@ write.csv(abla, csv_name)
 
 Cool!
 
-## Advanced: using a loop to draw a map for each species
+### Optional advanced: using a loop to draw a map for each species
 <details>
   <summary>Click to see this tutorial!</summary>
 In R a loop uses the floowing logic
